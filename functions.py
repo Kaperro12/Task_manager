@@ -89,24 +89,6 @@ def dodaj_zadanie(tytul):
     zadania.append(TodoTask(tytul))  # Dodanie nowego zadania do listy
     zapisz_zadania(zadania)  # Zapisanie zaktualizowanej listy zadań
 
-
-# Funkcja rozpoczynająca zadanie
-def rozpocznij_zadanie(tytul):
-    zadania = zaladuj_zadania()  # Załadowanie istniejących zadań
-    # Sprawdzenie, czy już istnieje zadanie w trakcie
-    for zadanie in zadania:
-        if zadanie.status == "W trakcie":
-            print("Błąd: Maksymalnie jedno zadanie może mieć status 'W trakcie'.")
-            return
-    # Szukanie zadania o podanym tytule i zmianie jego statusu
-    for zadanie in zadania:
-        if zadanie.tytul == tytul and zadanie.status == "Do zrobienia":
-            zadanie.status = "W trakcie"
-            zapisz_zadania(zadania)  # Zapisanie zaktualizowanej listy zadań
-            return
-    print("Nie znaleziono zadania do rozpoczęcia.")
-
-
 # Funkcja kończąca zadanie
 def zakoncz_zadanie():
     zadania = zaladuj_zadania()  # Załadowanie istniejących zadań
